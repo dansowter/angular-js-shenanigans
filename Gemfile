@@ -1,37 +1,57 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
+gem 'active_model_serializers'
+gem 'cancan'
+gem 'capistrano'
+gem 'devise'
+gem 'haml-rails'
+gem 'jquery-rails'
+gem 'mongoid'
+gem 'geocoder' # must load after Mongoid.
 gem 'rails', '3.2.11'
+gem 'redis-rails'
+gem 'sidekiq'
+gem 'state_machine'
+gem 'strong_parameters'
+gem 'turbolinks'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
-
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+  gem 'angularjs-rails'
+  gem 'coffee-rails'
+  gem 'compass-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
-gem 'jquery-rails'
+group :development, :qa, :staging, :test do
+  gem 'colorize'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'rest-client'
+end
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development, :qa, :staging do
+  gem 'awesome_print'
+  gem 'debugger', platform: :mri_19
+  gem 'sextant'
+  gem 'thin', platform: :mri_19
+end
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+group :development, :test do
+  gem 'guard-rspec'
+  gem 'launchy'
+  gem 'pry'
+  gem 'pry-rescue'
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'rspec-rails'
+  gem 'vcr'
+  gem 'webmock'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'mongoid-rspec'
+  gem 'simplecov', require: false
+end
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'

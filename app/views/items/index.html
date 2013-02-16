@@ -1,24 +1,24 @@
 <div id="app" ng-controller="ItemsCtrl">
+  <div id="activeItem">
+    <h2>{{activeItem.description}}</h2>
+    <ul>
+      <li ng-repeat="(author, estimate) in activeItem.estimates">
+        {{author}} estimated {{estimate}} days effort
+      </li>
+    </ul>
+    <visualise-estimates val="activeItem.estimates"></visualise-estimates>
+  </div>
+
   <h1><input contenteditable="true" ng-model="myName"> is estimating all the things!!!</h1>
-
-  <form ng-submit="addItem(newItem)">
-    <textarea id="newItemArea" placeholder="What else?" ng-model="newItem"></textarea>
-  </form> 
-
-
-  <h2>The things so far...</h2>
   <ul>
     <li ng-repeat="item in items" ng-class="{active: item == activeItem}">
-      
       <span class="description">
         {{item.description}}
       </span>
-      <ul ng-model="item.estimates">
-        <li ng-repeat="(author, estimate) in item.estimates">
-          {{author}} estimated {{estimate}} days effort
-        </li>
-      </ul>
     </li>
+
+    <form ng-submit="addItem(newItem)">
+      <textarea id="newItemArea" placeholder="What else?" ng-model="newItem"></textarea>
+    </form>
   </ul>
 </div>
-

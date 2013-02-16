@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
+//= d3.min
+//= require items
 //= require_tree .

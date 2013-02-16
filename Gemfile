@@ -17,6 +17,7 @@ gem 'turbolinks'
 
 group :assets do
   gem 'angularjs-rails'
+  gem 'bootstrap-sass', '~> 2.3.0.0'
   gem 'coffee-rails'
   gem 'compass-rails'
   gem 'sass-rails'

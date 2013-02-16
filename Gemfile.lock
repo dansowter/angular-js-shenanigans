@@ -35,6 +35,8 @@ GEM
     arel (3.0.2)
     awesome_print (1.1.0)
     bcrypt-ruby (3.0.1)
+    bootstrap-sass (2.3.0.0)
+      sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.9)
     capistrano (2.14.2)
@@ -299,6 +301,7 @@ DEPENDENCIES
   active_model_serializers
   angularjs-rails
   awesome_print
+  bootstrap-sass (~> 2.3.0.0)
   cancan
   capistrano
   capybara

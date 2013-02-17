@@ -1,18 +1,11 @@
-defaultItems = [
-  "As an admin I want to CRUD locations",
-  "As an admin I want to CRUD consultants",
-  "As an admin I want to enter the scheduled locations of all consultants",
-  "As a consultant I want to enter my scheduled locations",
-  "As a client I want to see the scheduled locations of consultants",
-  "As a consultant I want to register after receiving my invitation email",
-  "As a consultant I want to sign in",
-  "As a consultant I want to manage my information"
+estimator = angular.module 'estimator', ["ngResource"]
+
+estimator.factory "Item", ["$resource", ($resource) ->
+  $resource("/items/:id", {id: "@id"}, {update: {method: "PUT"}})
 ]
 
-estimator = angular.module 'estimator', []
-
-estimator.controller 'ItemsCtrl', ($scope) ->
-  $scope.items = []
+estimator.controller 'ItemsCtrl', ($scope, Item) ->
+  $scope.items = Item.get()
   $scope.activeItem = null
   $scope.newItem = ""
   $scope.myName = "Dan"
@@ -26,6 +19,7 @@ estimator.controller 'ItemsCtrl', ($scope) ->
         item = 
           description: description
           estimates: []
+        Item.save(item)
         $scope.items.push item
         $scope.activeItem = item
 
@@ -47,5 +41,3 @@ estimator.controller 'ItemsCtrl', ($scope) ->
     i = $scope.items.indexOf item
     previous = $scope.items[i - 1] || $scope.items[$scope.items.length - 1]
     $scope.activeItem = previous
-
-  $scope.addItem item for item in defaultItems
